@@ -1,0 +1,32 @@
+.dark-mode .page-link{
+    color: white;
+    background-color: #111827;
+  }
+
+.dark-mode .page-link:hover{
+    color: white;
+    background-color: #22c55e;
+}
+
+.dark-mode .active>.page-link{
+    background-color: #22c55e;
+    color: white;
+    border-color: white;
+}
+
+.light-mode .page-link{
+  color: black;
+  background-color: #ccd1d6;
+  border-color: #111827;
+}
+
+.light-mode .page-link:hover{
+  color: black;
+  background-color: #22c55e;
+}
+
+.light-mode .active>.page-link{
+    background-color: #22c55e;
+    color: black;
+    border-color: black;
+}

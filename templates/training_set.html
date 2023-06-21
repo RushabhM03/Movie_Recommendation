@@ -1,0 +1,67 @@
+
+
+    {% include "header.html" %}
+
+    <div class="flex flex-wrap w-full -my-12">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0 px-3">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 title mx-auto text-center">Some of the movies used for training</h1>
+        </div>
+      </div>
+
+    <div class="py-20 flex justify-center">
+      {{ pagination.links }}
+    </div>
+    
+    {% for i in range(0,24,4) %}
+    <section class="body-font -my-12">
+        <div class="container px-5 py-4 mx-auto">
+          <div class="flex flex-wrap w-full mb-20 -my-12">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0 px-3">
+              
+            </div>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="bg-opacity-40 p-6 rounded-lg test-box">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{posters[i]}}" alt="content">
+                <h3 class="tracking-widest text-green-600 text-semi-bold text-xs font-medium title-font">{{ratings[i]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_list[i]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class=" bg-opacity-40 p-6 rounded-lg test-box">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{posters[i+1]}}" alt="content">
+                <h3 class="tracking-widest text-green-600 text-semi-bold text-xs font-medium title-font">{{ratings[i+1]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_list[i+1]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class=" bg-opacity-40 p-6 rounded-lg test-box">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{posters[i+2]}}" alt="content">
+                <h3 class="tracking-widest text-green-600 text-semi-bold text-xs font-medium title-font">{{ratings[i+2]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_list[i+2]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class=" bg-opacity-40 p-6 rounded-lg test-box">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{posters[i+3]}}" alt="content">
+                <h3 class="tracking-widest text-green-600 text-semi-bold text-xs font-medium title-font">{{ratings[i+3]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_list[i+3]}}</h2>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endfor %}
+
+    <div class="py-16 flex justify-center">
+      {{ pagination.links }}
+    </div>
+
+    {% include "footer.html" %}
+
+ 

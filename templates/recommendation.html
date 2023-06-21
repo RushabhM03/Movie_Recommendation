@@ -1,0 +1,101 @@
+
+    {% include "header.html" %}
+
+    <section class="body-font -my-16">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 title">Select a Movie</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Please select a movie from the vast variety of movies present in the dropdown menu below and let us help you recommend similar movies</p>
+          </div>
+          <!--<div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0 items-end sm:space-x-4 sm:space-y-0 space-y-4">
+            <div class="relative sm:mb-0 flex-grow w-full">
+              <label for="full-name" class="leading-7 text-sm text-gray-400">Movie Name</label>
+              <input type="text" id="full-name" name="full-name" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" wtx-context="352B8074-CF5A-40EF-A7AE-D36E399137E7">
+            </div>
+            
+            <button class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Recommend</button>
+          </div>-->
+          <div class="row">
+            <div class="col-md-3">
+
+            </div>
+            <div class="center col-md-6">
+              <form action="/recommendation" method="POST" class="flex flex-col items-center justify-center">
+                <select class="form-select border-black" id="movies" name="movies" aria-label="Default select example">
+                  {% for j in movie_list %}
+                  <option value="{{j}}">{{j}}</option>
+                  {% endfor %}
+                  
+                </select><br>
+                <button class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Recommend</button>
+
+                {% if status == False %}
+                <div class="center mt-4">
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                  <div class="wave"></div>
+                </div>
+                {% endif %}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {% if status: %}
+      <section class="body-font -my-12">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-wrap w-full mb-20 -my-12">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0 px-3">
+              <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 title">Below are the recommended movies</h1>
+              <div class="h-1 w-20 bg-green-500 rounded"></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap -m-4">
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="test-box bg-opacity-40 p-6 rounded-lg">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{poster[0]}}" alt="content">
+                <h3 class="tracking-widest text-green-400 text-xs font-medium title-font">{{votes[0]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_names[0]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="test-box bg-opacity-40 p-6 rounded-lg">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{poster[1]}}" alt="content">
+                <h3 class="tracking-widest text-green-400 text-xs font-medium title-font">{{votes[1]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_names[1]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="test-box bg-opacity-40 p-6 rounded-lg">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{poster[2]}}" alt="content">
+                <h3 class="tracking-widest text-green-400 text-xs font-medium title-font">{{votes[2]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_names[2]}}</h2>
+                
+              </div>
+            </div>
+            <div class="xl:w-1/4 md:w-1/2 p-4">
+              <div class="test-box bg-opacity-40 p-6 rounded-lg">
+                <img class="h-50 rounded w-full object-cover object-center mb-6" src="{{poster[3]}}" alt="content">
+                <h3 class="tracking-widest text-green-400 text-xs font-medium title-font">{{votes[3]}}</h3>
+                <h2 class="text-lg title font-medium title-font mb-4">{{movie_names[3]}}</h2>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+
+      {% include "footer.html" %}
+  

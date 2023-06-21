@@ -1,0 +1,9 @@
+.dark-mode .active{
+    color: #fff !important;
+    font-weight: 700;
+}
+
+.light-mode .active{
+    color: black;
+    font-weight: 700;
+}

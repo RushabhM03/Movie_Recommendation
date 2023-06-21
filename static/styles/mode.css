@@ -1,0 +1,68 @@
+.dark-mode {
+    /* Define your dark mode styles here */
+    background-color: #111827;
+    color: rgb(156 163 175);
+}
+
+.dark-mode .title{
+    color: white;
+}
+
+.dark-mode .test-box{
+    background-color: rgb(31 41 55);
+}
+
+.dark-mode .link{
+    color: rgb(156 163 175);
+}
+
+.dark-mode .link:hover{
+    color: white;
+}
+
+.dark-mode .input{
+    background-color: #161e2d;
+    border-color: rgb(55 65 81);;
+    color: rgb(243 244 246);
+}
+
+.dark-mode .input:focus{
+    background-color: rgb(17 24 39);
+}
+
+  /* Light mode styles */
+.light-mode {
+    /* Define your light mode styles here */
+    background-color: #f8fafc;
+    color: #1f2937;
+}
+
+.light-mode .title{
+    color: #111827;
+}
+
+.light-mode .test-box{
+    background-color: rgb(209 213 219);
+}
+
+.light-mode .card:hover{
+    background-color: #f8fafc;
+}
+
+.light-mode .link{
+    color: #111827;
+}
+
+.light-mode .link:hover{
+    color: rgb(109, 114, 125);
+}
+
+.light-mode .input{
+    background-color: rgb(209 213 219);
+    border-color: rgb(55 65 81);
+}
+
+.light-mode .input:focus{
+    background-color: rgb(188, 191, 198);
+    color: black;
+}
