@@ -78,26 +78,22 @@ def logout():
 
 @app.route("/login_front")
 def login_front():
-    mode = session.get('mode', 'dark-mode')
-    return render_template("login.html", mode=mode)
+    return render_template("login.html")
 
 @app.route("/")
 @login_is_required
 def home():
     active="home"
-    mode = session.get('mode', 'dark-mode')
-    return render_template("index.html", mode=mode, active_tab=active)
+    return render_template("index.html", active_tab=active)
 
 @app.route("/about")
 def about():
     active="about"
-    mode = session.get('mode', 'dark-mode')
-    return render_template("about.html",mode=mode, active_tab=active)
+    return render_template("about.html", active_tab=active)
 
 @app.route("/contact", methods=['GET', 'POST'])
 def contact():
     active="contact"
-    mode = session.get('mode', 'dark-mode')
     if request.method == 'POST':
         try:
             if request.form:
@@ -107,19 +103,18 @@ def contact():
                 msg = Message('Hello', sender ='rushabh.maru123@gmail.com', recipients = [rec, 'rushabh.maru03@gmail.com'])
                 msg.body = body
                 mail.send(msg)
-                return render_template("sent.html", mode=mode, active_tab=active)
+                return render_template("sent.html", active_tab=active)
             
         except Exception as e:
             error = {'error': e}
-            return render_template("contact.html", mode=mode, active_tab=active)
+            return render_template("contact.html", active_tab=active)
 
     else:
-        return render_template("contact.html", mode=mode, active_tab=active)
+        return render_template("contact.html", active_tab=active)
 
 @app.route("/recommendation", methods=['GET', 'POST'])
 def recommendation():
     active="recommend"
-    mode = session.get('mode', 'dark-mode')
     status = False
     movie_list = movies['title'].values
     if request.method == 'POST':
@@ -128,43 +123,33 @@ def recommendation():
                 movies_name = request.form['movies']
                 recommended_movies_name, recommended_movies_poster, recommended_movie_votes = recommend(movies_name)
                 status = True
-                return render_template("recommendation.html", movie_names= recommended_movies_name, poster=recommended_movies_poster, movie_list = movie_list, status = status, votes=recommended_movie_votes, mode=mode, active_tab=active)
+                return render_template("recommendation.html", movie_names= recommended_movies_name, poster=recommended_movies_poster, movie_list = movie_list, status = status, votes=recommended_movie_votes, active_tab=active)
 
         except Exception as e:
             error = {'error': e}
             return render_template("recommendation.html", movie_list = movie_list, status = status, error = error, active_tab=active)
     else:
         print(movie_list)
-        return render_template("recommendation.html", movie_list = movie_list, status = status, mode=mode, active_tab=active)
+        return render_template("recommendation.html", movie_list = movie_list, status = status, active_tab=active)
 
 @app.route("/training_set")
 def training_set():
-    mode = session.get('mode', 'dark-mode')
+    
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     per_page=24
     movie_list, posters, ratings = get_movies(offset=offset, per_page=per_page)
     pagination = Pagination(page=page, per_page=per_page, total=100, css_framework='bootstrap5')
-    return render_template('training_set.html', movie_list = movie_list, posters = posters, ratings = ratings, page=page, per_page=per_page, pagination=pagination, mode=mode)
+    return render_template('training_set.html', movie_list = movie_list, posters = posters, ratings = ratings, page=page, per_page=per_page, pagination=pagination)
 
 @app.route("/news")
 def news():
-    mode = session.get('mode', 'dark-mode')
     data, len = getNews()
     #print(len)
-    return render_template("news.html", data=data, len=len, mode=mode)
-
-@app.route('/toggle-mode')
-def toggle_mode():
-    if session.get('mode') == 'dark-mode':
-        session['mode'] = 'light-mode'
-    else:
-        session['mode'] = 'dark-mode'
-    return redirect(request.referrer)
+    return render_template("news.html", data=data, len=len)
 
 @app.errorhandler(404)
 def page_not_found(error):
-    mode = session.get('mode', 'dark-mode')
-    return render_template('404.html', mode=mode), 404
+    return render_template('404.html'), 404
 
 @app.errorhandler(401)
 def page_restricted(error):

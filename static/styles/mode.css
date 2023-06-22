@@ -2,6 +2,8 @@
     /* Define your dark mode styles here */
     background-color: #111827;
     color: rgb(156 163 175);
+    transition: color 1s ease;
+    transition: background 1s ease;
 }
 
 .dark-mode .title{
@@ -35,6 +37,8 @@
     /* Define your light mode styles here */
     background-color: #f8fafc;
     color: #1f2937;
+    transition: color 1s ease;
+    transition: background 1s ease;
 }
 
 .light-mode .title{
